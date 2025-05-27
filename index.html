@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Chat Assistant</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='frontend/style.css') }}" />
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="logo">
+        <i class="fas fa-robot"></i>
+        <h1>AI Assistant</h1>
+      </div>
+      <div class="header-controls">
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span>Online</span>
+        </div>
+        <button id="new-chat-btn" class="btn-secondary">
+          <i class="fas fa-plus"></i> New Chat
+        </button>
+      </div>
+    </header>
+
+    <div class="chat-container">
+      <div id="chat-box" class="message-area"></div>
+
+      <div class="input-container">
+        <div class="input-wrapper">
+          <input type="text" id="message" placeholder="Type your message..." autocomplete="off" />
+          <button id="send-button">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+        <div class="input-footer">
+          <small>AI Assistant may produce inaccurate information</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="{{ url_for('static', filename='frontend/script.js') }}"></script>
+</body>
+</html>

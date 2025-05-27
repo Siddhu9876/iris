@@ -1,0 +1,9 @@
+flask
+openai
+psycopg2-binary
+python-dotenv
+
+Flask
+flask-cors
+python-dotenv
+openai
