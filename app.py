@@ -3,8 +3,6 @@ from flask_cors import CORS
 import os
 from datetime import datetime
 from dotenv import load_dotenv
-
-# OpenAI imports (new SDK style)
 from openai import OpenAI, OpenAIError, RateLimitError, AuthenticationError
 
 load_dotenv()
@@ -12,18 +10,19 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
-# Correct: just the env var name, not the full key string!
-openai_api_key = os.getenv("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")
-client = OpenAI(api_key=openai_api_key)
+# Initialize OpenAI client with API key from environment
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 SYSTEM_PROMPT = """
-You are ChatGPT, a large language model trained by OpenAI. 
-Respond conversationally and helpfully. Format responses with markdown when appropriate:
+You are Iris, a helpful and knowledgeable AI assistant. 
+Format your responses using markdown when appropriate:
 - Use **bold** for emphasis
 - Use `code` for code snippets
 - Use ``` for code blocks
 - Use - or * for lists
 - Use > for quotes
+
+Keep responses clear, helpful, and well-structured.
 """
 
 conversations = {}
@@ -32,7 +31,6 @@ def get_conversation_id():
     return datetime.now().strftime("%Y%m%d%H%M%S%f")
 
 def format_response(response_text):
-    # Leave markdown code blocks intact
     if "```" in response_text:
         return response_text
     return response_text
